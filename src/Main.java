@@ -1,14 +1,19 @@
 public class Main {
     public static void main(String[] args) {
-        // Unit Test for Cash class
-
-        // Test setup
-        Exchange exchange = new NYSE("someAccessKey");
-        Cash dollar = new Cash(exchange, 100);
+        Exchange exchange = new TestExchange();
+        Cash dollar = new Cash(exchange, 200);
         System.out.println("Dollar: " + dollar.toString());
 
-        // Test 'in' method of Cash
-        Cash euro = dollar.in("Euro");
+        Cash euro = dollar.in("EUR");
         System.out.println("Dollar to Euro: " + euro.toString());
+
+        Cash jpy = dollar.in("JPY");
+        System.out.println("Dollar to JPY: " + jpy.toString());
+
+        Cash inr = dollar.in("INR");
+        System.out.println("Dollar to INR: " + inr.toString());
+
+        Cash unknown = dollar.in("CAD");
+        System.out.println("Dollar to CAD: " + unknown.toString());
     }
 }
